@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Cuaderno alumno</title>
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+	<script type="text/javascript" src="../01/angular.min.js" ></script>
+	<script type="text/javascript" src="alumnos.js" ></script>
+</head>
+<body  ng-controller="AlumnosController">
+  <h1> 
+    cuaderno de alumnos
+  </h1>
+  <div class="wrapper">
+    <div ng-repeat="alumno in alumnos" class="contact-item">
+      <div class="nombre"> {{alumno.nombre}} - {{alumno.telefono}}</div>
+      <span class="curso"> {{alumno.curso}} </span>
+    </div>
+
+  </div>
+
+	
+</body>
+</html>
