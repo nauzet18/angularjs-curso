@@ -12,7 +12,7 @@
     cuaderno de alumnos
   </h1>
   <div class="wrapper">
-    <div ng-repeat="alumno in alumnos" class="contact-item">
+    <div ng-repeat="alumno in alumnos | orderBy: nombre" class="contact-item">
       <div class="nombre"> {{alumno.nombre}} - {{alumno.telefono}}</div>
       <span class="curso"> {{alumno.curso}} </span>
     </div>
