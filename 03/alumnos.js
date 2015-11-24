@@ -12,7 +12,14 @@ function AlumnosController($scope)
     $scope.alumnos.push(
         { nombre: $scope.nuevoAlumno.nombre, curso: $scope.nuevoAlumno.curso, telefono: $scope.nuevoAlumno.telefono }
       );  
+
+    $scope.formVisibylity = false;
   }
 
+  $scope.formVisibylity = false;
+
+  $scope.ShowForm = function(){
+    $scope.formVisibylity = true;
+  }
 
 }
