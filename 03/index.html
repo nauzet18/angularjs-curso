@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
 	<title>Cuaderno alumno</title>
   <link rel="stylesheet" type="text/css" href="estilo.css">
-	<script type="text/javascript" src="../01/angular.min.js" ></script>
-	<script type="text/javascript" src="alumnos.js" ></script>
+
 </head>
 <body  ng-controller="AlumnosController">
   <h1> 
@@ -18,7 +17,18 @@
     </div>
 
   </div>
+  <div class="wrapper">
+    <h2> Añadir contacto</h2>
+    Nombre: <input type="text" ng-model="nuevoAlumno.nombre" ></input>
+    Telefono: <input type="text" ng-model="nuevoAlumno.telefono" ></input>
+    curso: <input type="text" ng-model="nuevoAlumno.curso" ></input>
 
-	
+    <button ng-click="Save()">
+      Guardar
+    </button>
+  </div>
+
+	<script type="text/javascript" src="../01/angular.min.js" ></script>
+  <script type="text/javascript" src="alumnos.js" ></script>
 </body>
 </html>
