@@ -13,12 +13,14 @@
     </div>
   </form>
   <p></p>
-  <p class="input-group" ng-repeat="tarea in tareas">
-    <input type="text" ng-model="tarea" class="form-control">
-    <span class="input-group-btn">
-      <button class="btn btn-danger" aria-label="Eliminar" ng-click="eliminarTarea($index)">
-        X
-      </button>
-    </span>
-  </p>
+  <div ui-sortable ng-model="tareas">
+    <p class="input-group" ng-repeat="tarea in tareas" style="padding: 5px 10px; cursor: move;">
+      <input type="text" ng-model="tarea" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" aria-label="Eliminar" ng-click="eliminarTarea($index)">
+          X
+        </button>
+      </span>
+    </p>
+  </div>
 </div>
