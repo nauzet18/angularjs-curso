@@ -15,18 +15,16 @@ angular.module('16App')
     $scope.tareas = tareasEnAlmacen && tareasEnAlmacen.split('\n') || [] ;
     $scope.$watch('tareas', function () {
         localStorageService.add('tareas', $scope.tareas.join('\n'));
-      }
-      ,true);
+      },true);
 
     $scope.addTarea = function()
     {
       $scope.tareas.push( $scope.tarea );      
-      $scope.tarea="";
+      $scope.tarea='';
     };
 
     $scope.eliminarTarea = function(index)
     {
-      
       $scope.tareas.splice(index, 1);
     };
 
