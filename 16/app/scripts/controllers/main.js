@@ -9,9 +9,22 @@
  */
 angular.module('16App')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.tareas = [
+      'item 1',
+      'item 2',
+      'item 3'
     ];
+
+    $scope.addTarea = function()
+    {
+      $scope.tareas.push( $scope.tarea );      
+      $scope.tarea="";
+    };
+
+    $scope.eliminarTarea = function(index)
+    {
+      
+      $scope.tareas.splice(index, 1);
+    };
+
   });
