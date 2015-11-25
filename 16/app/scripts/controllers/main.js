@@ -10,9 +10,7 @@
 angular.module('16App')
   .controller('MainCtrl', function ($scope) {
     $scope.tareas = [
-      'item 1',
-      'item 2',
-      'item 3'
+      
     ];
 
     $scope.addTarea = function()
