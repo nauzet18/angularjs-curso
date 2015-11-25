@@ -1,0 +1,35 @@
+[4mRunning "serve" task[24m
+
+[4mRunning "clean:server" (clean) task[24m
+Cleaning .tmp...[32mOK[39m
+
+[4mRunning "wiredep:app" (wiredep) task[24m
+
+[4mRunning "concurrent:server" (concurrent) task[24m
+    
+    [4mRunning "copy:styles" (copy) task[24m
+    Copied [36m1[39m files
+    
+    [32mDone, without errors.[39m
+    
+    
+    Execution Time (2015-11-25 18:12:21 UTC)
+    loading tasks  3ms  ▇▇▇▇▇▇▇▇▇▇▇▇ 25%
+    copy:styles    9ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 75%
+    Total 12ms
+    
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/styles/main.css created.
+
+[4mRunning "connect:livereload" (connect) task[24m
+Started connect web server on http://0.0.0.0:9000
+
+[4mRunning "watch" task[24m
+Waiting...
+
+
+Execution Time (2015-11-25 18:12:19 UTC)
+concurrent:server   1.8s  ▇▇▇▇▇ 10%
+watch              15.8s  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 89%
+Total 17.8s
+
