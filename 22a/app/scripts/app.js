@@ -35,6 +35,11 @@ angular
         controller: 'ArticulosCtrl',
         controllerAs: 'articulos'
       })
+      .when('/galeria', {
+        templateUrl: 'views/galeria.html',
+        controller: 'GaleriaCtrl',
+        controllerAs: 'galeria'
+      })
       .otherwise({
         redirectTo: '/'
       });
