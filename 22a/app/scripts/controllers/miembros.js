@@ -30,10 +30,20 @@ angular.module('22aApp')
     {
       $scope.nuevoMiembro={};
       var modalInstance = $modal.open({
-                  templateUrl: 'views/add-miembros.html'
-                  }
-              );
+                  templateUrl: 'views/add-miembros.html',
+                  controller:'AddNuevoMiembroCtrl'
+                  
+              });
 
+      
     };
 //------------------------
+  })
+  .controller('AddNuevoMiembroCtrl', function ($scope, $modalInstance) 
+  {
+      
+      $scope.cancel =function()
+          {
+              $modalInstance.dismiss('cancel');
+          };
   });

@@ -103,3 +103,13 @@ width:100%}
 .ui-grid-row:nth-child(even) .ui-grid-cell {
   background: AliceBlue;
 }
+
+.modal-body input{
+display:block;
+}
+.ng-valid{
+    border: thin solid #090;
+}
+.ng-invalid{
+    border: thin solid #990000;
+}
