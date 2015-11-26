@@ -8,7 +8,7 @@
  * Controller of the 22aApp
  */
 angular.module('22aApp')
-  .controller('MiembrosCtrl', function ($scope,$http) {
+  .controller('MiembrosCtrl', function ($scope,$http,$modal) {
     $http.get('http://localhost:9000/miembros.json').success(function(data)
     {
       $scope.miembros =data;
@@ -25,4 +25,15 @@ angular.module('22aApp')
         {field:'tipoMiembro', displayName:'Tipo de Miembro'}]
 
     };
+
+  $scope.showModal=function () 
+    {
+      $scope.nuevoMiembro={};
+      var modalInstance = $modal.open({
+                  templateUrl: 'views/add-miembros.html'
+                  }
+              );
+
+    };
+//------------------------
   });
