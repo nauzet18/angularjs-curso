@@ -16,6 +16,7 @@ angular.module('22aApp')
 
     $scope.gridOptions = {
       data: 'miembros',
+      enableFiltering: true,
       columnDefs: [
         {field:'no', displayName:'Nº.'}, 
         {field:'nombre', displayName:'Nombre'}, 
