@@ -15,6 +15,13 @@ angular.module('22aApp')
     })    
 
     $scope.gridOptions = {
-      data: 'miembros'    
+      data: 'miembros',
+      columnDefs: [
+        {field:'no', displayName:'Nº.'}, 
+        {field:'nombre', displayName:'Nombre'}, 
+        {field:'fidelidad', displayName:'Puntos Fidelidad'},
+        {field:'fechaUnion', displayName:'Fecha de Unión'},
+        {field:'tipoMiembro', displayName:'Tipo de Miembro'}]
+
     };
   });
