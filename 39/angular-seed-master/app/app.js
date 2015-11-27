@@ -10,3 +10,7 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {templateUrl: 'lista-pelis/lista-pelis.html', controller: 'ListaPelisCtrl'});
+  $routeProvider.otherwise({redirectTo: '/'});
+}]);
