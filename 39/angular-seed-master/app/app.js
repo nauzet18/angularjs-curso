@@ -3,13 +3,12 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  
+  'myApp.services',
+  'myApp.filters',
+  'myApp.directives',
+  'myApp.controllers'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'lista-pelis/lista-pelis.html', controller: 'ListaPelisCtrl'});
   $routeProvider.otherwise({redirectTo: '/'});
