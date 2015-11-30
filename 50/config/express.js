@@ -5,6 +5,7 @@ var config = require('./config'),
     compress = require('compression'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
+    flash = require('connect-flash'),
     passport = require('passport');
 
 module.exports = function() {
@@ -31,6 +32,8 @@ module.exports = function() {
 
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(flash());
   
   require('../app/routes/index.server.routes.js')(app);
   require('../app/routes/users.server.routes.js')(app);

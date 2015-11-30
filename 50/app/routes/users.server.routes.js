@@ -1,20 +1,22 @@
 // Invocar el modo 'strict' de JavaScript
 'use strict';
 
-// Cargar el controller 'users'
-var users = require('../../app/controllers/users.server.controller');
+var users = require('../../app/controllers/users.server.controller'),
+    passport = require('passport');
 
-// Define el método  routes module
 module.exports = function(app) {
-	
-  // Configura la ruta base para 'users' 
-  app.route('/users')
-      .post(users.create)
-      .get(users.list);
+  app.route('/signup')
+     .get(users.renderSignup)
+     .post(users.signup);
 
-  app.route('/users/:userId')
-     .get(users.read);
-  
-  app.param('userId', users.userByID);
+  app.route('/signin')
+     .get(users.renderSignin)
+     .post(passport.authenticate('local', {
+       successRedirect: '/',
+       failureRedirect: '/signin',
+       failureFlash: true
+     }));
 
+  app.get('/signout', users.signout);
 };
+
