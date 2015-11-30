@@ -1,60 +1,74 @@
-// Invocar modo 'strict' de JavaScript
-'use strict';
+var User = require('mongoose').model('User'),
+  passport = require('passport');
 
-// Cargar el model Mongoose 'User'
-var User = require('mongoose').model('User');
+var getErrorMessage = function(err) {
+  var message = '';
 
-// Crear un nuevo método controller 'create'
-exports.create = function(req, res, next) {
-  // Crear una nueva instancia del model Mongoose 'User'
-  var user = new User(req.body);
-  // Usar el método 'save' de la instancia 'User' para salvar un nuevo documento user
-  user.save(function(err) {
-    if (err) {
-      // Llamar al siguiente middleware con un mensaje de error
-      return next(err);
-    } else {
-      // Usar el objeto 'response' para enviar una respuesta JSON
-      res.json(user);
+  if (err.code) {
+    switch (err.code) {
+      case 11000:
+      case 11001:
+        message = 'Username already exists';
+        break;
+      default:
+        message = 'Something went wrong';
     }
-  });
-};
-
-// Crear un nuevo método controller 'list'
-exports.list = function(req, res, next) {
-  // Usa el método static 'User' 'find' para recuperar la lista de usuarios
-  User.find({}, 'username email', function(err, users) {
-    if (err) {
-      // llama al siguiente middleware con un mensaje de error
-      return next(err);
-    } else {
-      // Usa el objeto 'response' para enviar una respuesta JSON
-      res.json(users);
+  } else {
+    for (var errName in err.errors) {
+      if (err.errors[errName].message) message = err.errors[errName].message;
     }
-  });
+  }
+
+  return message;
 };
 
-// Crear un nuevo método controller
-exports.read = function(req, res) {
-  // Usa el objeto 'response' para enviar una respuesta JSON
-  res.json(req.user);
+exports.renderSignin = function(req, res, next) {
+  if (!req.user) {
+    res.render('signin', {
+      title: 'Sign-in Form',
+      messages: req.flash('error') || req.flash('info')
+    });
+  } else {
+    return res.redirect('/');
+  }
+};
+exports.renderSignup = function(req, res, next) {
+  if (!req.user) {
+    res.render('signup', {
+      title: 'Sign-up Form',
+      messages: req.flash('error')
+    });
+  } else {
+    return res.redirect('/');
+  }
 };
 
-// Crear un nuevo método controller 'userByID' 
-exports.userByID = function(req, res, next, id) {
-  // Usa el método static 'findOne' de 'User' para recuperar un usuario específico
-  User.findOne({
-    _id: id
-  }, function(err, user) {
-    if (err) {
-      // Llama al siguiente middleware con un mensaje de error
-      return next(err);
-    } else {
-      // Configura la propiedad 'req.user'
-      req.user = user;
+exports.signup = function(req, res, next) {
+  if (!req.user) {
+    var user = new User(req.body);
+    var message = null;
 
-      // Llama al siguiente middleware
-      next();
-    }
-  });
+    user.provider = 'local';
+
+    user.save(function(err) {
+      if (err) {
+        var message = getErrorMessage(err);
+
+        req.flash('error', message);
+        return res.redirect('/signup');
+      }
+      req.login(user, function(err) {
+        if (err) return next(err);
+        return res.redirect('/');
+      });
+    });
+  } else {
+    return res.redirect('/');
+  }
 };
+
+exports.signout = function(req, res) {
+  req.logout();
+  res.redirect('/');
+};
+
